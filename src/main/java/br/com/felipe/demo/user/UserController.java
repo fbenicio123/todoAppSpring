@@ -16,12 +16,12 @@ public class UserController {
 
 
     @PostMapping("/")
-    public ResponseEntity<UserModel> create(@RequestBody UserModel userModel) {
+    public ResponseEntity<UserEntity> create(@RequestBody UserEntity userModel) {
        return ResponseEntity.ok(service.save(userModel));
     }
 
     @GetMapping
-    public ResponseEntity<List<UserModel>> list() {
+    public ResponseEntity<List<UserEntity>> list() {
         return ResponseEntity.ok(service.listAll());
     }
 }

@@ -1,21 +1,23 @@
 package br.com.felipe.demo.user;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import java.util.UUID;
 
-
 @Entity
-public class UserModel {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String username;
     private String name;
     private String password;
+
+     public UUID getId(){
+        return this.id;
+    }
 
     public String getUsername(){
         return this.username;
