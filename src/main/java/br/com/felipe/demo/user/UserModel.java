@@ -1,13 +1,13 @@
 package br.com.felipe.demo.user;
 
-import lombok.Data;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import java.util.UUID;
 
-@Data
+
 @Entity
 public class UserModel {
     @Id
@@ -16,4 +16,28 @@ public class UserModel {
     private String username;
     private String name;
     private String password;
+
+    public String getUsername(){
+        return this.username;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getPassword(){
+        return this.password;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
 }
