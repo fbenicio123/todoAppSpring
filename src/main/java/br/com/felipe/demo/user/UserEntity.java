@@ -14,6 +14,7 @@ public class UserEntity {
     private String username;
     private String name;
     private String password;
+    private String email;
 
      public UUID getId(){
         return this.id;
@@ -29,6 +30,10 @@ public class UserEntity {
 
     public String getName(){
         return this.name;
+    }
+
+    public String getEmail(){
+        return this.email;
     }
 
     public void setName(String name){

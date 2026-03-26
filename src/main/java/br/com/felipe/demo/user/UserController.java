@@ -4,6 +4,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
+
 
 @RestController
 @RequestMapping("/users")
@@ -17,7 +19,17 @@ public class UserController {
 
     @PostMapping("/")
     public ResponseEntity<UserEntity> create(@RequestBody UserEntity userModel) {
-       return ResponseEntity.ok(service.save(userModel));
+        return ResponseEntity.ok(service.save(userModel));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<UserEntity> delete(@PathVariable UUID id) {
+        return ResponseEntity.ok(service.delete(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserEntity> put(@RequestBody UserEntity userModel) {
+        return ResponseEntity.ok(service.put(userModel));
     }
 
     @GetMapping
