@@ -20,6 +20,10 @@ public class UserEntity {
         return this.id;
     }
 
+    public void setId(UUID id){
+        this.id = id;
+    }
+
     public String getUsername(){
         return this.username;
     }

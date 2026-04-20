@@ -4,28 +4,9 @@ import org.springframework.stereotype.Service;
 
 import br.com.felipe.demo.user.event.UserEvent;
 import br.com.felipe.demo.user.event.UserEventProducer;
-import lombok.RequiredArgsConstructor;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
-
-// @Service
-// public class UserService {
-//     private final UserRepository repository;
-
-//     public UserService(UserRepository repository){
-//         this.repository = repository;
-//     }
-
-//     public UserEntity save(UserEntity user) {
-//         return repository.save(user);
-//     }
-
-//     public List<UserEntity> listAll() {
-//         return repository.findAll();
-//     }
-// }
 
 @Service
 public class UserService {
@@ -38,7 +19,10 @@ public class UserService {
     }
 
     public UserEntity save(UserEntity user) {
-        return userRepository.save(user);
+        UserEntity saved = userRepository.save(user);
+        UserEvent event = new UserEvent(saved.getId(), "CREATED", saved.getEmail(), saved.getName(), LocalDateTime.now());
+        eventProducer.publishUserEvent(event);
+        return saved;
     }
 
     public UserEntity delete(UUID id) {
@@ -51,8 +35,10 @@ public class UserService {
     }
 
     public UserEntity put(UserEntity user) {
-        userRepository.save(user);
-        return user;
+        UserEntity updated = userRepository.save(user);
+        UserEvent event = new UserEvent(updated.getId(), "UPDATED", updated.getEmail(), updated.getName(), LocalDateTime.now());
+        eventProducer.publishUserEvent(event);
+        return updated;
     }
 
     public List<UserEntity> listAll() {

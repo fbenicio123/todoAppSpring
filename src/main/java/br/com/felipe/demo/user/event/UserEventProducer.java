@@ -12,7 +12,7 @@ public class UserEventProducer {
     private static final String TOPIC = "user-events";
 
     public void publishUserEvent(UserEvent event) {
-        final String eventKey = TOPIC + "-" + event.getUserId().toString();
-        kafkaTemplate.send(eventKey, event);
+        final String eventKey = event.getUserId().toString();
+        kafkaTemplate.send(TOPIC, eventKey, event);
     }
 }

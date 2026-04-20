@@ -28,7 +28,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserEntity> put(@RequestBody UserEntity userModel) {
+    public ResponseEntity<UserEntity> put(@PathVariable UUID id, @RequestBody UserEntity userModel) {
+        userModel.setId(id);
         return ResponseEntity.ok(service.put(userModel));
     }
 
