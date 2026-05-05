@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+/event-consumer/node_modules
